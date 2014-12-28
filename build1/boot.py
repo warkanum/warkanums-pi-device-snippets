@@ -63,11 +63,7 @@ def TempsensorRead():
         data = dht11_sensor.read(PIN_TC_WP)
         #print('Temp={0}*C  Humidity={1}%  Status={2}  Error={3}'.format(data['temperature'], data['humidity'], data['valid'], data['err']))
         if data['valid'] == 1:
-            validData = data
-            break
-
-    if validData:
-        return validData
+            return data
 
     return None
 
