@@ -1,0 +1,8 @@
+[Unit]
+Description=Warkanum's Pi Tool 1
+
+[Service]
+ExecStart=/home/warkanum/pi_modules/warkanums-pi-device-snippets/build1/boot.py
+
+[Install]
+WantedBy=multi-user.target
