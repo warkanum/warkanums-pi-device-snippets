@@ -1,0 +1,4 @@
+Python 3:
+
+psycopg2
+dht11_sensor (https://github.com/warkanum/WiringPi_DHT_Sensor_PyMod)
