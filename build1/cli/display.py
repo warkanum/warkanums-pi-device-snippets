@@ -1,6 +1,7 @@
 import tkinter as tk
 import psycopg2 as pg
 import datetime as dt
+import datetime
 
 SQL_SRV='192.168.89.6'
 SQL_USR='pistats'
@@ -32,7 +33,7 @@ class Application(tk.Frame):
         self.lbl_motion = tk.Label(self, textvariable=self.data_time, width=20).grid(row=2, column=3, sticky=(tk.E, tk.S))
         self.btn_update = tk.Button(self, text="Update Now", command=self.do_update).grid(column=0, row=2, sticky=(tk.W, tk.S))
      
-    def updateLabels(self):
+    def updateLabels(self, Timer=True):
         self.data_time.set("" + str(dt.datetime.now()))
         
         if self.sqlcur is not None:
@@ -52,14 +53,16 @@ class Application(tk.Frame):
                 if not data:
                     break
 
-        self.after(2000,  self.updateLabels)  
+        print("updated: " + str(datetime.datetime.now()))
+
+        if Timer:
+          self.after(1000,  self.updateLabels)  
 
         #self.QUIT = tk.Button(self, text="QUIT", fg="red",command=master.destroy)
         #self.QUIT.pack(side="bottom")
 
     def do_update(self):
-        print("hi there, everyone!")
-        self.updateLabels()
+        self.updateLabels(Timer=False)
 
 
 def main():
